@@ -1,0 +1,58 @@
+body{
+    padding: 0 ;
+    background: green !important;;
+    color: red;
+}
+h1,h2,h3{
+    color: red !important;;
+}
+
+.hideme{
+    display: none;
+}
+
+#header{
+    height: 70px;
+    text-align: center;
+}
+
+#leftColumn{
+    width: 200px;
+    float: left;
+    padding-bottom: 300px;
+}
+
+#leftMenu, #loginBox, #registerBox{
+    padding-bottom: 20px;
+}
+
+#centerColumn{
+    width: 600px;
+    float: left;
+    padding-left: 90px;
+}
+
+#footer{
+    clear: both;
+    padding-top: 20px;
+
+}
+
+.menuCaption{
+    padding: 3px;
+    font-weight: bold;
+}
+
+.cartBox{
+    padding: 5px 0px 5px 0px;
+}
+
+.showHidden{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+#registerBoxHidden{
+    display: none;
+}
