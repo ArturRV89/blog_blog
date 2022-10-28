@@ -3,7 +3,7 @@
 <div class="container">
     {include file='../total/navigate.tpl'}
 
-    <form action="/index.php?controller=user&action=registration" method="post">
+    <form action="index.php?controller=user&action=registration" method="post">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
             <input name="email" type="email" class="form-control" id="newEmail" aria-describedby="emailHelp">

@@ -4,7 +4,7 @@ namespace App\Model;
 
 class UsersModel extends ServiceModel
 {
-    protected static function getAllUsers()
+    protected static function getAllUsers(): bool|array|string
     {
         $sql = "SELECT * 
                 FROM `users` 
@@ -19,13 +19,13 @@ class UsersModel extends ServiceModel
         }
     }
 
-    protected static function registerNewUser($email, $passwordHashed)
+    protected static function registerNewUser(string $email,string $passwordHashed): \mysqli_result|bool|array|null
     {
         $email = htmlspecialchars(
             mysqli_real_escape_string(
                 self::getMysqli(), $email));
 
-        $sql = "INSERT INTO 
+        $sql = "INSERT INTO
                 `users` (`email`, `password`)
                 VALUES ('{$email}', '{$passwordHashed}')";
 
@@ -71,7 +71,7 @@ class UsersModel extends ServiceModel
         return mysqli_fetch_assoc($records);
     }
 
-    protected static function checkExistUserPasswordByEmail($checkedEmail)
+    protected static function checkExistUserPasswordByEmail(string $checkedEmail): bool|array|null
     {
         $sql = "SELECT `password` 
                 FROM `users` 
@@ -82,7 +82,7 @@ class UsersModel extends ServiceModel
         return mysqli_fetch_assoc($records);
     }
 
-    protected static function updatePasswordHash(string $checkedEmail, string $newHash)
+    protected static function updatePasswordHash(string $checkedEmail, string $newHash): bool|array|null
     {
         $sql = "UPDATE `users` 
                 SET `password` = '{$newHash}'

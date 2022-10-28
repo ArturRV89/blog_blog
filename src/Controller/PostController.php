@@ -58,6 +58,7 @@ class PostController extends PostModel
         $_SESSION['message'] = $responseData;
         self::redirect(self::$urlAllPosts);
     }
+
     public static function searchAction(object $smarty)
     {
         $searchQuery = trim($_POST['query_search']);

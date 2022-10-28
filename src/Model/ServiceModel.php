@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use JetBrains\PhpStorm\NoReturn;
 use mysqli;
 
 class ServiceModel
@@ -19,7 +20,7 @@ class ServiceModel
         $smarty->display($templateName . TemplatePostfix);
     }
 
-    protected static function redirect(string $url): void
+    #[NoReturn] protected static function redirect(string $url): void
     {
         header('Location:' . "{$url}");
         die();
@@ -27,8 +28,8 @@ class ServiceModel
 
     public static function changeRecordsToArrayForSmarty($records): bool|array
     {
-        if (!$records)
-            return false;
+        if (!$records) return false;
+
         $smartyRecords = [];
         while ($row = mysqli_fetch_assoc($records)) {
             $smartyRecords[] = $row;
@@ -45,5 +46,4 @@ class ServiceModel
     {
         return isset($_SESSION['user']);
     }
-
 }

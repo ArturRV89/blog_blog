@@ -9,7 +9,7 @@ class UserController extends UsersModel
     static string $urlUserIndex = "index.php?controller=user&action=index";
     static string $urlPostIndex = "index.php?controller=post&action=index";
 
-    static public function indexAction($smarty)
+    static public function indexAction(object $smarty)
     {
         self::checkAuthForSmartyTemplate($smarty);
         $allUsers = self::getAllUsers();
@@ -19,8 +19,9 @@ class UserController extends UsersModel
         self::loadTemplate($smarty, 'userIndex');
     }
 
-    static public function createAction($smarty)
+    static public function createAction(object $smarty)
     {
+        $smarty->assign('pageTitle', 'Registration');
         self::loadTemplate($smarty, 'userCreate');
     }
 
@@ -28,7 +29,6 @@ class UserController extends UsersModel
     {
         $email = trim($_POST['email']) ?? null;
         $password = trim($_POST['password']) ?? null;
-
         $responseData = self::checkExistEnter($email, $password);
 
         if (!$responseData && self::checkExistUserEmail($email)) {
@@ -63,9 +63,7 @@ class UserController extends UsersModel
     public static function loginAction()
     {
         $email = trim($_POST['email']);
-
-        $password = $_POST['password'];
-        $password = trim($password);
+        $password = trim($_POST['password']);
 
         $errors = [];
         $checkedEnter = self::checkExistEnter($email, $password);
